@@ -1,0 +1,11 @@
+package requestBodyType;
+
+public class RequestPayLoadUsingJSONlib {
+
+	//Uing org.json library
+	void testPostUsingJSONlibrary() {
+		
+		
+	}
+	
+}

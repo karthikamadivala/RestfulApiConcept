@@ -1,0 +1,13 @@
+XML Response
+
+To get the data from the body we have to go for Xpath
+Here rather using / we have to use . to go to child 
+example: body.data
+
+1. we can assert the response using Rest assure methods after then() condition.
+2. we can assert using Test NG by storing the API response in Response type veriable.
+		to get the response body data we can use
+			1. XMLPath() Method
+			2. XMLPath
+
+we can iterate in both XMLpatth() and XMLPath() Class

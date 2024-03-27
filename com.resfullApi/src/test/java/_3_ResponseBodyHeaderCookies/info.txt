@@ -1,0 +1,58 @@
+------------------------Parameeters()--------------
+	types of parameters 
+	1. Path Parameter
+	2. Query Parameter
+	
+------------------------Path Parameter------------------------
+	Example:  	https://reqres.in/api/register
+	Method we used to pass Path parameter is below	
+	Method-:	given().pathParam("myuserspath", "users")
+
+We have to mention the defined the Path parameter in the restfull request method with curly bracets 
+Example :  https://reqres.in/api/users
+		   when().get("  https://reqres.in/api/{myuserspath}	")
+	
+------------------------Query parameter ------------------------
+ In the below example everything written after ? are called as Query parameter
+		  ?delay=3
+		  
+Example:	https://reqres.in/api/users?page=3&id=5	
+To Pass Query Parameter we use below method
+Method:		given().queryParam("page", 2)..queryParam("id", 5)
+
+Query parameters name should exactly match with the parameter in restufll request method
+ 
+We have to just define, and need not to mention the query parameter in the request.
+By default query parameters included in the resfull request. 
+Example :when().get("  https://reqres.in/api/{myuserspath}	")	
+
+
+
+------------------------Log()--------------
+Log is used to print the Response Header, Body and Cookies in the console.
+we can print the whole response are the part of the response using below methods
+log().all()
+log().Header()
+log().Cookies()
+log().body() 
+
+------------------------Cookies --------------
+If we want to verify the response then we have to go till then() methods and have to use other methods. 
+IF we want to check the response data,we have store response in Response type veriable. we sholuld stop after CURD methods(get,put,post,delete).
+
+1.	getCookie()
+2.  getCookies()
+
+To get single cookie value we have to use 
+getCookie()
+
+To get multiple cookies value we have to use 
+getCookies()
+
+------------------------Headers--------------
+To Verify the Response Headr we have to go for header() method
+it has to be used after then() method
+
+
+1. 	then().Header("HeaderType")
+2. 	then().Headers()

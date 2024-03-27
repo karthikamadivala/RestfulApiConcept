@@ -1,0 +1,20 @@
+JSON or XML Schema validation
+
+1. Response validation 
+2. Schema Validation
+
+Response validation and Schema Validation are different 
+
+In Response validation we are going to validate the response data of the Body. 
+where in Schema validation we are going to validate the data types of the Response(int, String , array, object)
+ 
+ Types
+1. JsonSchema Validation 
+2. XMLSchema Validation
+ 
+To convert the JSON data to Schema we can use below URL
+URL: https://jsonformatter.org/json-to-jsonschema
+
+Create a new JSON file to Save the JSON schema and use it in the script.
+Better approch is to store the JSON schema in resources folder.
+  

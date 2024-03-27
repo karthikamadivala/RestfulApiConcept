@@ -1,0 +1,15 @@
+Authentication and Authorization
+
+	Authentication 
+User is valid or not  using the credential
+
+	1. Basic
+	2. digest
+	3. preempive
+	4. bearer type
+	5. oauth
+	6. API key
+
+
+	Authorization
+User has permission to do perform function

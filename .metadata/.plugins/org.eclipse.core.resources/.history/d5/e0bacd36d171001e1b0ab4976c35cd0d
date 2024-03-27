@@ -1,0 +1,12 @@
+package _7_schemaValidation;
+
+public class SchemaValidation {
+
+	
+	private void jsonSchemaValidation() {
+
+	}
+	private void xmlSchemaValidation() {
+given().when().get("http://restapi.adequateshop.com/api/Traveler").
+	}	
+}

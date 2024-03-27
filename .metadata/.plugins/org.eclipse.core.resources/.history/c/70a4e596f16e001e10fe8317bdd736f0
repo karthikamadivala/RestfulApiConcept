@@ -1,0 +1,26 @@
+package _3_prameterUsage;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+import org.testng.annotations.Test;
+
+import io.restassured.response.Response;
+
+public class VerifyingHeadersInResponse {
+	@Test
+	void verifyHeader() {
+		given().when().get("https://reqres.in/api/users?page=2").then().statusCode(200)
+				.contentType("application/json; charset=utf-8")
+				.header("Server", "cloudflare")
+				.header("Content-Encoding", "gzip")
+				.header("Content-Type", "application/json; charset=utf-8")
+				.log().headers();
+	}
+
+	void getHeaderValues() {
+		Response res = given().when().get("https://reqres.in/api/users?page=2");
+		res.header("Content-Type");
+		res.getHeaders();
+	}
+}

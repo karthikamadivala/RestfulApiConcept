@@ -1,0 +1,40 @@
+package uploadandDownload;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.path.xml.XmlPath;
+import io.restassured.response.Response;
+
+import static io.restassured.RestAssured.given;
+
+import java.io.File;
+import java.util.List;
+
+import static org.hamcrest.Matchers.equalTo;
+
+public class UploadandDownload {
+
+	@Test
+	void singleFileUpload() {
+		File myfile = new File("./com.resfullApi/src/test/java/uploadandDownload/text1.txt");
+		given().multiPart("file", myfile).contentType("multipart/form-data").when().post("enter the url ").then()
+				.statusCode(200).body("filename", equalTo("text1")).log().all();
+	}
+
+	private void multiFileUpload() {
+		File myfile1 = new File("./com.resfullApi/src/test/java/uploadandDownload/text1.txt");
+		File myfile2 = new File("./com.resfullApi/src/test/java/uploadandDownload/text2.txt");
+		given().multiPart("files", myfile1).multiPart("files", myfile2).contentType("multipart/form-data").when()
+				.post("enter the url ").then()
+				.statusCode(200)
+				.body("[0].filename", equalTo("text1"))
+				.body("[0].filename", equalTo("text2")).log().all();
+
+	}
+
+	void download() {
+		
+
+	}
+}

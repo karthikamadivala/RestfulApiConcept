@@ -1,0 +1,48 @@
+
+JSON Body Assertion can be done in 2 ways
+
+1. using Test NG assertion
+2. Using Matchers of the rest assure 
+
+using rest matchers its difficult to validate all the response body so we use TestNG assertions
+
+
+In 2 ways we can extract the data from the response using reference variable
+1. jsonPath() method is used to get the data from the json Body ex:refVeariable.jsonPath().getBody() 
+2. JSONObejct class is also used to get the data from the Response 
+
+--------------- jsonPath() ------------
+jsonPath() Method is used to get the data from the json Body 
+We can not iterate if we use jsonPath()
+  
+  ex:actual = refResponse.jsonPath().get("data[0].email").toString();
+			assert.assertEqual(actual,expected)
+
+
+--------------- JSONObejct ------------------
+JSONObejct class is also used to get the data from the Response body.
+it makes easier to get the data using for loop
+the same can not be done using the jsonPath() method
+
+----------------------------------------
+In josonPath order of the data may change but not in JosnObject,
+even if it change we can iterate through the RESPONSE for loop with the help of below methods
+
+
+
+
+To iterate we have to use JSONObject() class in that we have 2 methods 
+
+1. getJSONArray().length();    ----to get the data from JSON array 
+2. getJSONObject().length();   ----to get the from JSON Object 
+
+
+how to parse json body data
+JSONObject class
+
+Response res = given().when().post();
+JSONObject jdata = new JSONObject(res.toString());
+ jdata.getJSONArry("book")
+ jdata.getJSONObject(0)
+
+

@@ -1,0 +1,19 @@
+	types of parameters 
+	1. Path Parameter
+	2. Query Parameter
+	
+Path Parameter
+	Example:  	https://reqres.in/api/register
+	Method we used pass Path parameter is below	
+	Method-:	.pathParam("myuser", "users")
+	
+Query parameter
+		in the below example everything proceded after? are called as Query parameter
+		  ?delay=3
+		  
+Example:	https://reqres.in/api/users?delay=3	
+To Pass Query Parameter we use below method
+Method:		.queryParam("page", 2)
+
+
+------------------------Cookies and headers--------------

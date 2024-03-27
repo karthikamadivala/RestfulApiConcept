@@ -1,0 +1,112 @@
+package _5_PrasingXMLResponseBody;
+
+import org.json.JSONObject;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.path.xml.XmlPath;
+import io.restassured.response.Response;
+
+import static io.restassured.RestAssured.given;
+
+import java.util.HashMap;
+import java.util.List;
+
+import static org.hamcrest.Matchers.equalTo;
+
+public class ParsingXMLResponse {
+
+//	@Test
+	void assertingXMLResopnseUsingMatcheerMethod() {
+//------Approch 1 ------------------
+		given().when().get("http://restapi.adequateshop.com/api/Traveler").then().statusCode(200)
+				.header("Content-Type", "application/xml; charset=utf-8")
+				.body("TravelerinformationResponse.page", equalTo("1"))
+				.body("TravelerinformationResponse.travelers.Travelerinformation[0].name", equalTo("Developer")).log()
+				.all();
+	}
+
+//	@Test
+	void assertingXMLResponseJsonPathMethodUsingTestNG() {
+//------Approch 2 ---fetching data using XMLPath method------Asserting with Test NG --------------
+
+		Response res = given().when().get("http://restapi.adequateshop.com/api/Traveler");
+
+//asserting header and cookies using Test NG methods	
+		Assert.assertEquals(res.statusCode(), 200);
+		Assert.assertEquals(res.header("Content-type"), "application/xml; charset=utf-8");
+
+//Getting response Body data using xmlPath method
+		String pageNo = res.xmlPath().get("TravelerinformationResponse.page");
+		String Singlename = res.xmlPath().get("TravelerinformationResponse.travelers.Travelerinformation[0].name")
+				.toString();
+
+		Assert.assertEquals(pageNo, "1");
+		Assert.assertEquals(Singlename, "Developer");
+
+//Getting List of data from the response Body using xmlPath method		
+		List<String> names = res.xmlPath().getList("TravelerinformationResponse.travelers.Travelerinformation.name");
+		Boolean status = false;
+		for (String name : names) {
+			if (name == "Developer123") {
+				status = true;
+				break;
+			}
+		}
+		Assert.assertEquals(status, true);
+
+	}
+
+	@Test
+	void assertingJSONResponseWithXMLPathClassMethodUsingTestNG() {
+//------Approch 3 ---fetching data using XMLPath Class------Asserting with Test NG --------------
+
+		Response res = given().when().get("http://restapi.adequateshop.com/api/Traveler");
+		XmlPath xmlObject = new XmlPath(res.asString());
+
+		System.out.println(xmlObject.getString("TravelerinformationResponse.travelers.Travelerinformation.name"));
+		System.out.println(xmlObject.getList("TravelerinformationResponse.travelers.Travelerinformation.name"));
+
+		List<String> NameList = xmlObject.getList("TravelerinformationResponse.travelers.Travelerinformation.name");
+		Boolean status = false;
+		for (String name : NameList) {
+//			System.out.println(name);
+			if (name == "Developer") {
+				status = true;
+				break;
+			}
+		}
+		Assert.assertEquals(status, true);
+
+//		List<String> NList = xmlObject.get("TravelerinformationResponse.travelers.Travelerinformation.name");
+
+		for (String name : NameList) {
+			System.out.println(name);
+			if (name == "Developer") {
+				status = true;
+				break;
+			}
+		}
+
+	}
+
+//	@Test
+	void workout() {
+		Response res = given().when().get("http://restapi.adequateshop.com/api/Traveler");
+		String pageNo = res.xmlPath().get("TravelerinformationResponse.page");
+		String name = res.xmlPath().get("TravelerinformationResponse.travelers.Travelerinformation[0].name").toString();
+		String nam = res.xmlPath().getString("TravelerinformationResponse.travelers.Travelerinformation[0].name");
+		String names = res.xmlPath().get("TravelerinformationResponse.travelers.Travelerinformation.name").toString();
+		System.out.println(pageNo);
+		System.out.println(name);
+		System.out.println(nam);
+		System.out.println(names);
+
+		XmlPath xmlObject = new XmlPath(res.asString());
+		System.out.println(xmlObject);
+		System.out.println(xmlObject.getString("TravelerinformationResponse.travelers.Travelerinformation.name"));
+		System.out.println(xmlObject.getList("TravelerinformationResponse.travelers.Travelerinformation.name"));
+
+	}
+
+}

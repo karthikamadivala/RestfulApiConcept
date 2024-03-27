@@ -1,0 +1,11 @@
+package _7_schemaValidation;
+
+public class SchemaValidation {
+
+	
+	private void jsonSchemaValidatr() {
+		// TODO Auto-generated method stub
+
+	}
+	
+}

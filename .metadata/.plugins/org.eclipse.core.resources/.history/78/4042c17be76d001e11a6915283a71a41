@@ -1,0 +1,42 @@
+package day1;
+
+import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.*;
+import static io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matchers.*;
+
+import java.util.HashMap;
+
+import io.restassured.module.jsv.JsonSchemaValidator.*;
+
+public class HttpRequests {
+	int id = 0;
+
+//	@Test
+	void getUsers() {
+		given().when().get("https://reqres.in/api/users?page=2").then().statusCode(200).body("page", equalTo(2)).log()
+				.all();
+	}
+
+//	@Test
+	void createUser() {
+
+		HashMap data = new HashMap();
+		data.put("name", "Karthik");
+		data.put("name", "Karthik");
+
+		given().contentType("application/json").body(data).when().post("https://reqres.in/api/users").then()
+				.statusCode(201).log().all();
+	}
+	@Test
+	void createUseraAndGetID() {
+
+		HashMap data = new HashMap();
+		data.put("name", "Karthik");
+		data.put("name", "Karthik");
+
+		given().contentType("application/json").body(data).when().post("https://reqres.in/api/users").then()
+				.statusCode(201).log().all();
+	}
+}

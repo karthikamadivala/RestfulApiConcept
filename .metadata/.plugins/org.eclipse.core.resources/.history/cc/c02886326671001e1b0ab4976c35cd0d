@@ -1,0 +1,5 @@
+XML Response
+
+To get the data from the body we have to go for Xpath
+Here rather using / we have to use .
+example: body.data

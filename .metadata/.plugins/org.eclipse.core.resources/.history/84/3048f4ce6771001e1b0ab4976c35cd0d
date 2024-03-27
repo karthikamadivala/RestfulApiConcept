@@ -1,0 +1,8 @@
+XML Response
+
+To get the data from the body we have to go for Xpath
+Here rather using / we have to use . to go to child 
+example: body.data
+
+we can assert the response using Rest assure methods after then() condition. 
+we can iterate in both XMLpatth() and XMLPath() Class

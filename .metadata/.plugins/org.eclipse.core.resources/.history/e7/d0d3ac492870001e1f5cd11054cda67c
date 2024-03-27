@@ -1,0 +1,8 @@
+we can Assert the values in 2 ways
+
+1. using Test NG assertion
+2. Using Matchers of the rest assure 
+
+
+
+We can not iterate if we use jsonPath()

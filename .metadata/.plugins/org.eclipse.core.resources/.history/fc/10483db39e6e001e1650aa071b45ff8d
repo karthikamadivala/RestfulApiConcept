@@ -1,0 +1,11 @@
+package _3_prameterUsage;
+
+public class PathandQuery {
+
+//	URL:https:// reqres.in/api/users?page=2
+
+void testPathAndQueryParameter() {
+	given()
+		
+}
+}

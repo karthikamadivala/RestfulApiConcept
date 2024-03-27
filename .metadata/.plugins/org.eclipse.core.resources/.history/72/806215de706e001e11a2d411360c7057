@@ -1,0 +1,24 @@
+package requestBodyType;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+import java.util.HashMap;
+
+public class RequestPayLoadUsingJSONlib {
+
+	//Uing org.json library
+	void testPostUsingJSONlibrary() {
+		
+		JSONObject data= mew JSONObject();
+		
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		data.put("name", "Kiran");
+		data.put("job", "Kiranjob");
+
+		given().contentType("application/json").body(data).when().post("https://reqres.in/api/users").then()
+				.statusCode(201).body("name", equalTo("Kiran")).body("job", equalTo("Kiranjob"))
+				.header("Content-Type", "application/json; charset=utf-8").log().all();
+	}
+	
+}

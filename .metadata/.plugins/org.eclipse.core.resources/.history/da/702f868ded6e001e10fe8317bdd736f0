@@ -1,0 +1,47 @@
+package _3_prameterUsage;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+import java.util.Map;
+import java.util.Set;
+
+import org.testng.annotations.Test;
+
+import com.google.common.collect.Multiset.Entry;
+
+import io.restassured.response.Response;
+
+public class VerifyingCookiesInResponse {
+
+	// @Test
+	void verifyCookies() {
+		given().when().get("https://www.google.com/").then()
+		// below one should fail since cookies allways change it not constant.
+//		.cookie("AEC","Ackid1RAPyl_k2pJ73L24e12I38mfQkmPgOzPwQjfXsoN8V03EJjKMotcxM;Path=/;Domain=.google.com;Secure;HttpOnly;Expires=17/04/2024, 01:27;SameSite=lax")
+				.cookie("AEC").log().cookies();
+	}
+
+	
+	@Test
+	void getCookiesValues() {
+		Response res = given().when().get("https://www.google.com/");
+//To get the single cookie value
+		String singleCookie = res.getCookie("AEC");
+		System.out.println("single cookie value: " + singleCookie);
+
+//To get the Multiple cookie value at once
+		Map<String, String> multiCookies = res.getCookies();
+		/*
+		 * for (Map.Entry<String, String> entry : multiCookies.entrySet()) { String
+		 * mapKey = entry.getKey(); String mapValue= entry.getValue();
+		 * System.out.println("Cookie Name " + mapKey + "Cookie Value "+ mapValue ); }
+		 */
+	Set keylist = multiCookies.keySet();
+		for (String key : keylist) {
+
+			System.out.println(keylist);
+			System.out.println(keylist.valu);
+		}
+	}
+}

@@ -1,0 +1,49 @@
+package _8_serialAndDeserialzation;
+
+import org.testng.annotations.Test;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import _2_requestBodyType.Pojo_PayloadRequest;
+import io.restassured.matcher.RestAssuredMatchers;
+import io.restassured.module.jsv.JsonSchemaValidator;
+
+import static io.restassured.RestAssured.given;
+
+import java.io.File;
+import static org.hamcrest.Matchers.equalTo;
+
+public class SerializaationAndDeSerialization {
+
+//	@Test
+	private void Serializaation() throws JsonProcessingException {
+		PayloadData data = new PayloadData();
+		data.setName("Kiran");
+		data.setJob("Kiranjob");
+		data.setLname("KiranLastName");
+
+		ObjectMapper objecMapper = new ObjectMapper();
+		String jsondata = objecMapper.writerWithDefaultPrettyPrinter().writeValueAsString(data);
+		System.out.println(jsondata);
+	}
+
+	@Test
+	private void DeSerialization() throws JsonMappingException, JsonProcessingException {
+
+		String jsonData = "{\r\n" + "  \"name\" : \"KiranLastName\",\r\n" + "  \"job\" : \"Kiranjob\",\r\n"
+				+ "  \"lname\" : \"Kiran\"\r\n" + "}";
+		ObjectMapper objecMapper = new ObjectMapper();
+
+		PayloadData objectData = objecMapper.readValue(jsonData, PayloadData.class);
+//		  Object job = objectData.setJob("Tester");
+//		  Object LName= objectData.setLname("KeerthiLastName");
+//		  Object FName= objectData.setName("KeerthiFirstName");
+
+		System.out.println(objectData.setJob("Tester"));
+//		 System.out.println(LName);
+//		 System.out.println(FName);
+
+	}
+}

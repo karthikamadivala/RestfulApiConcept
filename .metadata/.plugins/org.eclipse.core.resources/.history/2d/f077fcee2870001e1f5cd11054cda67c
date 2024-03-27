@@ -1,0 +1,12 @@
+we can Assert the values in 2 ways
+
+1. using Test NG assertion
+2. Using Matchers of the rest assure 
+
+
+
+We can not iterate if we use jsonPath()
+To iterate we have to use JSONObject() class
+in that we have 2 methods 
+1. getJSONArray() 
+2. 

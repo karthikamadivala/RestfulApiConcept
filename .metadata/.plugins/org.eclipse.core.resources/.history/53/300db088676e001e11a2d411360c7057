@@ -1,0 +1,43 @@
+package requestBodyType;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.*;
+import static io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matchers.*;
+
+//URL of the API :  https://gorest.co.in/
+public class WaysToCreateRequestBody {
+
+	/*
+	 * Ways to Create Request Body 1. HashMap 2. Uing org.json 3. POJO(Plain old
+	 * java objects) 4. Extranal JSON
+	 */
+
+	@Test
+	// Post Method
+	void testPostUsingHashMap() {
+		HashMap<String, Object> data = new HashMap<String, Object>();
+		data.put("name", "Kiran");
+//		data.put("email", "Kiran@gmail.com");
+		data.put("job", "Tester");
+		
+//		data.put("gender", "Male");
+//		data.put("status", "Active");
+
+		/*
+		 * if we want to store array data in the HashMap First we have to store the data
+		 * in the array then we have to put the same into the HashMap
+		 */
+//		String CourseArry[] = { "Java", "Selenium", "Python" };
+//		data.put("course", CourseArry);
+		
+	given().contentType("application/json").body(data).when().post("https://reqres.in/api/users").then().statusCode(201).body("userId", null)
+	.log().all();
+
+	}
+
+}

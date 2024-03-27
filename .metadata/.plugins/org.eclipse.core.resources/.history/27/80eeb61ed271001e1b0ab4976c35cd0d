@@ -1,0 +1,21 @@
+package _7_schemaValidation;
+
+import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.given;
+
+import java.io.File;
+import static org.hamcrest.Matchers.equalTo;
+
+public class SchemaValidation {
+
+	private void jsonSchemaValidation() {
+		given().when().get("").then().log().all();
+	}
+
+	private void xmlSchemaValidation() {
+		given().when().get("http://restapi.adequateshop.com/api/Traveler").then()
+		.log().all();
+
+	}
+}

@@ -1,0 +1,11 @@
+JSON or XML Schema validation
+
+Response validation and Schema Validation are different 
+
+In Response validation we are going to validate the response data of the Body. 
+where in Schema validation we are going to validate the data types of the Response
+ 
+ 
+ Response validation 
+ 	Data of the Response
+ 	

@@ -1,0 +1,8 @@
+Authentication and Authorization
+
+	Authentication 
+User is valid or not  using the credential
+
+
+	Authorization
+User has permission to do perform function

@@ -1,0 +1,24 @@
+package uploadandDownload;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.restassured.path.xml.XmlPath;
+import io.restassured.response.Response;
+
+import static io.restassured.RestAssured.given;
+
+import java.util.List;
+
+import static org.hamcrest.Matchers.equalTo;
+
+public class UploadandDownload {
+
+	void upload() {
+		given().when().get().then();
+	}
+
+	void download() {
+
+	}
+}

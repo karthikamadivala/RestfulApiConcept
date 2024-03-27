@@ -1,0 +1,10 @@
+Resfull API used for scripting
+
+1.  https://reqres.in/
+2.  https://restful-booker.herokuapp.com/apidoc/index.html
+
+Test data can be taken using below methods
+1. HashMap
+2. JSONObject
+3. External JSON file
+4. POJO class

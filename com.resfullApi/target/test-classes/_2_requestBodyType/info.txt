@@ -1,0 +1,47 @@
+Resfull API used for scripting
+
+1.  https://reqres.in/
+2.  https://restful-booker.herokuapp.com/apidoc/index.html
+
+
+Test data can be taken using below process
+1. HashMap
+2. JSONObject
+3. External JSON file
+4. POJO class
+
+
+*Below 2 are the resource file used to get the data
+1. Pojo_PayloadRequest.java
+2. body.json
+3. HashMapgetdata.java
+
+
+* Order of execution while reading this code
+
+1.  RequestPayloadUsingHashMap
+2.  RequestPayLoadUsingJSONlib
+3.  RequestPayLoadUsingPOJO
+4. 	RequestPayLoadUsingExtranlJSONfile
+
+
+*we need JSON dependency to create a json object that can be added in the POM XML file
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20230227</version>
+		</dependency>
+*And also we need to import the below package in the test class
+		import org.json.JSONObject;		
+
+* In Hashmap we need not to convert the data to string in request body, but in JSONObject Libraly we have to.
+
+To Store the data in veriable we have to ignore the then() method. After when().post() method we have to use jsonpath(). 
+Json Path allows user to get the values of the response bofy in key value pair. 
+			.jsonPath().getInt("id");
+			.jsonPath().getString("name");
+
+Request must be ended after When().post() to store the whole response. 
+		Response res = given().When().post("_______");
+
+			

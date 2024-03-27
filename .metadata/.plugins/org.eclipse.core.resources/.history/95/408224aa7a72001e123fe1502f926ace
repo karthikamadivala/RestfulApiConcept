@@ -1,0 +1,27 @@
+package _8_serialAndDeserialzation;
+
+public class PayloadData {
+	private String name;
+	private String job;
+	private String Lname; 
+	public String getLname() {
+		return name;
+	}
+	public void setLnamee(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getJob() {
+		return job;
+	}
+	public void setJob(String job) {
+		this.job = job;
+	}
+	
+}

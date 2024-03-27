@@ -1,0 +1,39 @@
+package _8_serialAndDeserialzation;
+
+import org.testng.annotations.Test;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import _2_requestBodyType.Pojo_PayloadRequest;
+import io.restassured.matcher.RestAssuredMatchers;
+import io.restassured.module.jsv.JsonSchemaValidator;
+
+import static io.restassured.RestAssured.given;
+
+import java.io.File;
+import static org.hamcrest.Matchers.equalTo;
+
+public class SerializaationAndDeSerialization {
+
+	@Test
+	private void Serializaation() throws JsonProcessingException {
+		PayloadData data = new PayloadData();
+		data.setName("Kiran");
+		data.setJob("Kiranjob");
+		data.setLname("KiranLastName");
+
+		ObjectMapper objecMapper = new ObjectMapper();
+		String jsondata = objecMapper.writerWithDefaultPrettyPrinter().writeValueAsString(data);
+		System.out.println(jsondata);
+	}
+
+//	@Test
+	private void DeSerialization() {
+
+		String jsonData = "{\r\n" + "  \"name\" : \"KiranLastName\",\r\n" + "  \"job\" : \"Kiranjob\",\r\n"
+				+ "  \"lname\" : \"Kiran\"\r\n" + "}";
+		ObjectMapper objecMapper = new ObjectMapper();
+
+	}
+}

@@ -1,0 +1,14 @@
+package _3_prameterUsage;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+public class PathandQuery {
+
+//	URL:https:// reqres.in/api/users?page=2
+
+void testPathAndQueryParameter() {
+	given()
+		
+}
+}

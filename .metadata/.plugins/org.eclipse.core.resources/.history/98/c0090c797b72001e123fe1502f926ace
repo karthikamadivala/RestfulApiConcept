@@ -1,0 +1,34 @@
+package _8_serialAndDeserialzation;
+
+import org.testng.annotations.Test;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import _2_requestBodyType.Pojo_PayloadRequest;
+import io.restassured.matcher.RestAssuredMatchers;
+import io.restassured.module.jsv.JsonSchemaValidator;
+
+import static io.restassured.RestAssured.given;
+
+import java.io.File;
+import static org.hamcrest.Matchers.equalTo;
+
+public class SerializaationAndDeSerialization {
+
+	@Test
+	private void Serializaation() {
+		PayloadData data = new PayloadData();
+		data.setName("Kiran");
+		data.setJob("Kiranjob");
+		data.setLname("KiranLastName");
+		
+		ObjectMapper objecMapper = new ObjectMapper();
+		
+		given().contentType("application/json").body(data).when().get("https://reqres.in/api/users").then().log().all();
+	}
+
+//	@Test
+	private void DeSerialization() {
+
+	}
+}
